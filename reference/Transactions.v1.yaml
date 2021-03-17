@@ -10,8 +10,6 @@ info:
 servers:
   - url: 'https://ezzy.co'
     description: Production
-  - description: Production (Legacy)
-    url: 'https://mediacube.id'
   - description: Development
     url: 'https://id.mediacube.dev'
 paths:
@@ -209,8 +207,7 @@ paths:
                   description: for the payments api use partner
                 scopes:
                   type: string
-                  description: |-
-                    * - all available scopes "user.channels, user. common" are specific
+                  description: '* - all available scopes "user.channels, user. common" are specific'
               required:
                 - client_id
                 - client_secret
@@ -293,7 +290,7 @@ paths:
             type: string
           in: header
           name: Authroization
-          description: 'Bearer token that was issued after authorization /oauth/token'
+          description: Bearer token that was issued after authorization /oauth/token
           required: true
   /oauth/user:
     get:
@@ -552,7 +549,7 @@ components:
       properties:
         identify:
           type: string
-          description: To get an Identify Key, contact our support.
+          description: 'To get an Identify Key, contact our support.'
         purpose:
           type: integer
           enum:
@@ -718,7 +715,19 @@ components:
         - user_id
         - network
         - link
-  securitySchemes: {}
+  securitySchemes:
+    OAuth User Authorization:
+      type: oauth2
+      scheme: bearer
+      bearerType: JWT
+      description: ''
+      flows:
+        authorizationCode:
+          authorizationUrl: ''
+          tokenUrl: ''
+          refreshUrl: ''
+          scopes:
+            scope_1: ''
 tags:
   - name: Payments
   - name: Auth
